@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verification</title>
+    <script src="https://unpkg.com/webcam-easy@1.0.5/dist/webcam-easy.min.js"></script>
+    <link rel="stylesheet" href="css/webcam.css" />
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
+
+    <style></style>
+  </head>
+  <body>
+    <div class="boss">
+      <div class="heading">
+        <h1>Verify Your Image</h1>
+        <p>A Verification Mail will be sent on the Registered Email</p>
+      </div>
+      <video id="webcam" autoplay playsinline ></video>
+      <canvas id="canvas"></canvas>
+      <a download onCLick="takeAPicture()">Capture</a>
+    </div>
+
+    <script>
+      const webCam = document.getElementById("webcam");
+      const canvas = document.getElementById("canvas");
+      const webcam = new Webcam(webCam, "user", canvas);
+
+      webcam.start();
+      function takeAPicture() {
+        let picture = webcam.snap();
+        document.querySelector("a").href = picture;
+      }
+    </script>
+  </body>
+</html>
