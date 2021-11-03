@@ -19,7 +19,9 @@
       </div>
       <video id="webcam" autoplay playsinline ></video>
       <canvas id="canvas"></canvas>
-      <a download onCLick="takeAPicture()">Capture</a>
+      
+      <a target="_blank" download onCLick="takeAPicture()">Capture</a>
+   
     </div>
 
     <script>
@@ -31,6 +33,11 @@
       function takeAPicture() {
         let picture = webcam.snap();
         document.querySelector("a").href = picture;
+
+
+        // var a = $("<a>").attr("href", "http://i.stack.imgur.com/L8rHf.png").attr("download", "img.png").appendTo("body");
+        // a[0].click();
+        // a.remove();
       }
     </script>
   </body>
