@@ -33,7 +33,7 @@ margin-bottom: 20px;
     flex-direction: column;
 }
 
-a{
+#cap{
     padding: 10px 40px;
 color: white;
 background: linear-gradient(225deg,#1ee9b6de,#0388f4d3);

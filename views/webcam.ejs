@@ -20,7 +20,8 @@
       <video id="webcam" autoplay playsinline ></video>
       <canvas id="canvas"></canvas>
       
-      <a target="_blank" download onCLick="takeAPicture()">Capture</a>
+     
+      <button id="cap">Capture</button>
    
     </div>
 
@@ -28,17 +29,27 @@
       const webCam = document.getElementById("webcam");
       const canvas = document.getElementById("canvas");
       const webcam = new Webcam(webCam, "user", canvas);
-
+      const button = document.getElementById("cap");
       webcam.start();
-      function takeAPicture() {
+      button.addEventListener('click', async event => {
+     
         let picture = webcam.snap();
-        document.querySelector("a").href = picture;
+        document.querySelector("button").href = picture;
+        const image64 =canvas.btoa;
+        const data = { image64 };
+        const options = {
+          method: 'POST',
+          headers : {
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify(data)
+        };
+        const response = await fetch('/', options);
+        const json = await response.json();
+        console.log(json);
 
-
-        // var a = $("<a>").attr("href", "http://i.stack.imgur.com/L8rHf.png").attr("download", "img.png").appendTo("body");
-        // a[0].click();
-        // a.remove();
-      }
+       
+      });
     </script>
   </body>
 </html>
