@@ -14,29 +14,31 @@
   <body>
     <div class="boss">
       <div class="heading">
-        <h1>Verify Your Image</h1>
+        <h1 style="display: none;">Verify Your Image</h1>
         <p>A Verification Mail will be sent on the Registered Email</p>
       </div>
       <video id="webcam" autoplay playsinline ></video>
       <canvas id="canvas"></canvas>
-      
-     
-      <button id="cap">Capture</button>
+      <form action="/" method="POST"><div style="display: none;">
+            Username: <input type="text" id="img64capture" name="Username" value=""></div>
+            <input type="submit" value="Sign In">
+    </form>
    
     </div>
 
     <script>
       const webCam = document.getElementById("webcam");
       const canvas = document.getElementById("canvas");
+     document.getElementById("img64capture").value = "Hello World!";
       const webcam = new Webcam(webCam, "user", canvas);
       const button = document.getElementById("cap");
       webcam.start();
       button.addEventListener('click', async event => {
-     
         let picture = webcam.snap();
         document.querySelector("button").href = picture;
         const image64 =canvas.btoa;
         const data = { image64 };
+        console.log(data);
         const options = {
           method: 'POST',
           headers : {
